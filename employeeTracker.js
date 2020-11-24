@@ -86,3 +86,41 @@ const connection = mysql.createConnection({
         )
     })
   }
+
+  function addRole(){
+    console.log('Inside addRole function');
+
+      inquirer.prompt([
+          {
+              type: 'input',
+              name: 'roleName',
+              message: 'Enter the role you want to add: '
+          },
+          {
+            type: 'input',
+            name: 'salary',
+            message: 'Enter the salary for the role you added: '
+          },
+          {
+            type: 'input',
+            name: 'depID',
+            message: 'Enter the department ID for the role you added: '
+          }
+        ])
+
+    .then((answer) => {
+        connection.query(
+            'INSERT INTO roles SET ?',
+            {title: answer.roleName,
+             salary: answer.salary,
+             dep_id: answer.depID
+            },
+        function(err){
+            if(err) throw err;
+            console.log('Role added successfully');
+            askQuestions();
+
+        }
+        )
+    })
+  }
