@@ -34,6 +34,31 @@ INSERT INTO roles (title, salary, dep_id) VALUES ('Manager of Customer Support',
 
 -- Employees
 
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('John', 'Smith', 1, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Kristin', 'Stewart', 2, 3);
+INSERT INTO employees (first_name, last_name, role_id) VALUES ('Kathy', 'Elliot', 3);
+
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Joan', 'Allen', 4, 5);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Katy', 'Perry', 4, 5);
+INSERT INTO employees (first_name, last_name, role_id) VALUES ('James', 'Goodman', 5);
+
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Mindy', 'Kaling', 6, 8);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Chris', 'Evans', 7, 8);
+INSERT INTO employees (first_name, last_name, role_id) VALUES ('Jackie', 'Gleason', 8);
+
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Sherry', 'Miner', 9, 10);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Shirley', 'Temple', 9, 10);
+INSERT INTO employees (first_name, last_name, role_id) VALUES ('Mark', 'Calloway', 10);
+
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Larry', 'Fine', 11, 13);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Curly', 'Horwiz', 12, 13);
+INSERT INTO employees (first_name, last_name, role_id) VALUES ('Moe', 'Howard', 13);
+
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Marie', 'Antoinette', 14, 16);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Pat', 'Crawford', 15, 16);
+INSERT INTO employees (first_name, last_name, role_id) VALUES ('Paula', 'Dearland', 16);
+
+
 
 
 
