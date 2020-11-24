@@ -124,3 +124,47 @@ const connection = mysql.createConnection({
         )
     })
   }
+
+  function addEmp(){
+    console.log('Inside addRole function');
+
+      inquirer.prompt([
+          {
+              type: 'input',
+              name: 'firstName',
+              message: "Enter the employee's first name: "
+          },
+          {
+            type: 'input',
+            name: 'lastName',
+            message: "Enter the employee's last name: "
+          },
+          {
+            type: 'input',
+            name: 'roleID',
+            message: "Enter the employee's role id: "
+          },
+          {
+            type: 'input',
+            name: 'managID',
+            message: "Enter the employee's manager's id: "
+          }
+        ])
+
+    .then((answer) => {
+        connection.query(
+            'INSERT INTO employees SET ?',
+            {first_name: answer.firstName,
+             last_name: answer.lastName,
+             role_id: answer.roleID,
+             manager_id: answer.managID
+            },
+        function(err){
+            if(err) throw err;
+            console.log('Employee added successfully');
+            askQuestions();
+
+        }
+        )
+    })
+  }
