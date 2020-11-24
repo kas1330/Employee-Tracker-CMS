@@ -3,26 +3,26 @@ const inquirer = require('inquirer');
 const table = require('console.table');
 
 
-// var connection = mysql.createConnection({
-//     host: "localhost",
+var connection = mysql.createConnection({
+    host: "localhost",
   
-//     port: 3306,
+    port: 3306,
   
-//     // Your username
-//     user: "root",
+    // Your username
+    user: "root",
   
-//     // Your password
-//     password: "mysql23@#",
-//     database: "employeeDB"
-//   });
+    // Your password
+    password: "mysql23@#",
+    database: "employeeDB"
+  });
 
-//   connection.connect(function(err) {
-//     if (err) throw err;
-//     // run the start function after the connection is made to prompt the user
-//     askQuestions();
-//   });
+  connection.connect(function(err) {
+    if (err) throw err;
+    // run the start function after the connection is made to prompt the user
+    askQuestions();
+  });
 
-askQuestions();
+// askQuestions();
 //   const questions = [
 //     {
 //         type: 'list',
@@ -89,9 +89,31 @@ askQuestions();
     )
     .then((answer) => {
         console.log(answer.option);
-    }
+        switch(answer.option) {
+            case 'Add department':
+                addDept();
+                break;
+            case 'Add role':
+                addRole();
+                break;
+            case 'Add employee':
+                addEmp();
+                break;
+            case 'View departments':
+                viewDept();
+                break;
+            case 'View roles':
+                viewRoles();
+                break;
+            case 'View employees':
+                viewEmp();
+                break;
+            case 'Update employee role':
+                updateEmp();
+                break;
+        }
 
-    )
-
+    })
     
+
   }
