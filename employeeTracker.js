@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const table = require('console.table');
 
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: "localhost",
   
     port: 3306,
@@ -21,62 +21,6 @@ var connection = mysql.createConnection({
     // run the start function after the connection is made to prompt the user
     askQuestions();
   });
-
-// askQuestions();
-//   const questions = [
-//     {
-//         type: 'list',
-//         name: 'option',
-//         message: 'What would you like to do?',
-//         choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update employe roles']
-//     }
-    // {
-    // type: 'input',
-    // name: 'name',
-    // message: 'Enter a name:'
-    // },
-    // {
-    // type: 'input',
-    // name: 'id',
-    // message: 'Enter an id:'
-    // },
-    // {
-    // type: 'input',
-    // name: 'email',
-    // message: 'Enter an email:'
-    // },
-    // {
-    //     when: answer => {
-    //         return answer.option === 'Add department'
-    //     },
-    //     type: 'input',
-    //     name: 'officeNumber',
-    //     message: 'Enter their office number:'
-    // },
-    // {
-    //     when: answer => {
-    //         return answer.role === 'Engineer'
-    //     },
-    //     type: 'input',
-    //     name: 'github',
-    //     message: 'Enter their gitHub user name:'
-    // },
-    // {
-    //     when: answer => {
-    //         return answer.role === 'Intern'
-    //     },
-    //     type: 'input',
-    //     name: 'school',
-    //     message: 'Enter their school:'
-    // },
-    // {
-    // type: 'list',
-    // name: 'addPerson',
-    // message: 'Would you like to add someone else?',
-    // choices: ['Yes', 'No']
-    // }
-
-// ];
 
   function askQuestions(){
     inquirer.prompt(
@@ -116,4 +60,29 @@ var connection = mysql.createConnection({
     })
     
 
+  }
+
+  function addDept(){
+    console.log('Inside addDept function');
+
+      inquirer.prompt(
+          {
+              type: 'input',
+              name: 'deptName',
+              message: 'Enter the name of the department you want to add: '
+          }
+      )
+
+    .then((answer) => {
+        connection.query(
+            'INSERT INTO department SET ?',
+            {dep_name: answer.deptName},
+        function(err){
+            if(err) throw err;
+            console.log('Dept added successfully');
+            askQuestions();
+
+        }
+        )
+    })
   }
