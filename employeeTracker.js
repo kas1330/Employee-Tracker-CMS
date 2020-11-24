@@ -52,7 +52,7 @@ const connection = mysql.createConnection({
             case 'View employees':
                 viewEmp();
                 break;
-            case 'Update employee role':
+            case 'Update employee roles':
                 updateEmp();
                 break;
         }
@@ -126,7 +126,7 @@ const connection = mysql.createConnection({
   }
 
   function addEmp(){
-    console.log('Inside addRole function');
+    console.log('Inside addEmp function');
 
       inquirer.prompt([
           {
@@ -168,3 +168,86 @@ const connection = mysql.createConnection({
         )
     })
   }
+
+//   function viewDept(){
+//     console.log('Inside viewDept function');
+
+//     //   inquirer.prompt([
+//     //       {
+//     //           type: 'input',
+//     //           name: 'firstName',
+//     //           message: "Enter the employee's first name: "
+//     //       },
+//     //       {
+//     //         type: 'input',
+//     //         name: 'lastName',
+//     //         message: "Enter the employee's last name: "
+//     //       },
+//     //       {
+//     //         type: 'input',
+//     //         name: 'roleID',
+//     //         message: "Enter the employee's role id: "
+//     //       },
+//     //       {
+//     //         type: 'input',
+//     //         name: 'managID',
+//     //         message: "Enter the employee's manager's id: "
+//     //       }
+//     //     ])
+
+//     // .then((answer) => {
+//         connection.query(
+//             'INSERT INTO employees SET ?',
+//             {first_name: answer.firstName,
+//              last_name: answer.lastName,
+//              role_id: answer.roleID,
+//              manager_id: answer.managID
+//             },
+//         function(err){
+//             if(err) throw err;
+//             console.log('Employee added successfully');
+//             askQuestions();
+
+//         }
+//         )
+//     // })
+//   }
+
+function updateEmp(){
+    console.log('Inside updateEmp function');
+
+      inquirer.prompt([
+        {
+            type: 'input',
+            name: 'idNum',
+            message: "Enter the employee's id number: ",
+        },
+        {
+            type: 'input',
+            name: 'roleID',
+            message: "Enter the employees new role id: ",
+        }
+        ])
+
+    .then((answer) => {
+        let idNum = answer.idNum;
+        let roleIDnum = answer.roleID;
+        
+        connection.query(
+            'UPDATE employees SET ? WHERE ?',
+            [
+                {
+                    role_id: roleIDnum
+                },
+                {
+                    id: idNum
+                }
+            ],
+            function(err){
+                if(err) throw err;
+                console.log('Employee name updated successfully');
+            }
+        )
+
+    })
+}
