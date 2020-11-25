@@ -184,7 +184,7 @@ const connection = mysql.createConnection({
             //Display the departments in a table
             // console.log(res);
             console.table(res);
-            // askQuestions();
+            askQuestions();
         }
         )
   }
