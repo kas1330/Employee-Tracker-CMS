@@ -28,7 +28,7 @@ const connection = mysql.createConnection({
             type: 'list',
             name: 'option',
             message: 'What would you like to do?',
-            choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update employee roles']
+            choices: ['Add department', 'Add role', 'Add employee', 'View departments', 'View roles', 'View employees', 'Update employee roles', 'Done']
         }
     )
     .then((answer) => {
@@ -54,6 +54,9 @@ const connection = mysql.createConnection({
                 break;
             case 'Update employee roles':
                 updateEmp();
+                break;
+            case 'Done':
+                connectionEnd();
                 break;
         }
 
@@ -179,8 +182,8 @@ const connection = mysql.createConnection({
             if(err) throw err;
             console.log('SQL ran successfully');
             //Display the departments in a table
-            console.log(res);
-
+            // console.log(res);
+            console.table(res);
             // askQuestions();
         }
         )
@@ -195,9 +198,10 @@ function viewRoles(){
         if(err) throw err;
         console.log('SQL ran successfully');
         //Display the departments in a table
-        console.log(res);
-
-        // askQuestions();
+        // console.log(res);
+        console.table(res);
+        
+        askQuestions();
     }
     )
 }
@@ -211,9 +215,10 @@ function viewEmp(){
         if(err) throw err;
         console.log('SQL ran successfully');
         //Display the departments in a table
-        console.log(res);
+        // console.log(res);
+        console.table(res);
 
-        // askQuestions();
+        askQuestions();
     }
     )
 }
@@ -256,4 +261,8 @@ function updateEmp(){
             }
         )
     })
+}
+
+function connectionEnd(){
+    connection.end();
 }
