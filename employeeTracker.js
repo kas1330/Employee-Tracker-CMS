@@ -169,49 +169,54 @@ const connection = mysql.createConnection({
     })
   }
 
-//   function viewDept(){
-//     console.log('Inside viewDept function');
+  function viewDept(){
+    console.log('Inside viewDept function');
 
-//     //   inquirer.prompt([
-//     //       {
-//     //           type: 'input',
-//     //           name: 'firstName',
-//     //           message: "Enter the employee's first name: "
-//     //       },
-//     //       {
-//     //         type: 'input',
-//     //         name: 'lastName',
-//     //         message: "Enter the employee's last name: "
-//     //       },
-//     //       {
-//     //         type: 'input',
-//     //         name: 'roleID',
-//     //         message: "Enter the employee's role id: "
-//     //       },
-//     //       {
-//     //         type: 'input',
-//     //         name: 'managID',
-//     //         message: "Enter the employee's manager's id: "
-//     //       }
-//     //     ])
+        connection.query(
+            'SELECT * FROM department',
 
-//     // .then((answer) => {
-//         connection.query(
-//             'INSERT INTO employees SET ?',
-//             {first_name: answer.firstName,
-//              last_name: answer.lastName,
-//              role_id: answer.roleID,
-//              manager_id: answer.managID
-//             },
-//         function(err){
-//             if(err) throw err;
-//             console.log('Employee added successfully');
-//             askQuestions();
+        function(err, res){
+            if(err) throw err;
+            console.log('SQL ran successfully');
+            //Display the departments in a table
+            console.log(res);
 
-//         }
-//         )
-//     // })
-//   }
+            // askQuestions();
+        }
+        )
+  }
+
+function viewRoles(){
+    console.log('Inside viewRoles function');
+    connection.query(
+        'SELECT * FROM roles',
+
+    function(err, res){
+        if(err) throw err;
+        console.log('SQL ran successfully');
+        //Display the departments in a table
+        console.log(res);
+
+        // askQuestions();
+    }
+    )
+}
+
+function viewEmp(){
+    console.log('Inside viewEmp function');
+    connection.query(
+        'SELECT * FROM employees',
+
+    function(err, res){
+        if(err) throw err;
+        console.log('SQL ran successfully');
+        //Display the departments in a table
+        console.log(res);
+
+        // askQuestions();
+    }
+    )
+}
 
 function updateEmp(){
     console.log('Inside updateEmp function');
@@ -246,8 +251,9 @@ function updateEmp(){
             function(err){
                 if(err) throw err;
                 console.log('Employee name updated successfully');
+                
+                askQuestions();
             }
         )
-
     })
 }
