@@ -1,10 +1,8 @@
 # Employee-Tracker-CMS
 
- <!-- <img src='noteTaker.PNG' alt='Note Taker screenshot'>  -->
-  
 ## Description
   
- A web app that uses Node and Express on the backend and is deployed to Heroku. A user can enter a note title and message, it will then be stored so they can view it when they go back to the page. They can also delete notes they no longer need.
+ A CLI application meant to demonstrate a simple CMS. It uses Node.js to take user input, and uses a MySql database to keep a record of the user input. Users can create and populate a database using the sql files provided. The after using node to run the applications, they can then perform various interactions with the data base. 
   
 ## Table of Contents
 
